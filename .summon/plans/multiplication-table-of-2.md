@@ -1,5 +1,5 @@
 ---
-status: pending
+status: implemented
 title: Multiplication Table of 2 Page
 ---
 
