@@ -1,1 +1,128 @@
 @import "tailwindcss";
+
+/* Semantic tokens — registering them here makes bg-background, text-muted,
+   border-border, bg-accent, text-accent-foreground, etc. available as utilities. */
+@theme {
+  --color-background: var(--app-background);
+  --color-surface: var(--app-surface);
+  --color-surface-hover: var(--app-surface-hover);
+  --color-border: var(--app-border);
+  --color-border-strong: var(--app-border-strong);
+  --color-text: var(--app-text);
+  --color-muted: var(--app-muted);
+  --color-faint: var(--app-faint);
+  --color-accent: var(--app-accent);
+  --color-accent-hover: var(--app-accent-hover);
+  --color-accent-foreground: var(--app-accent-foreground);
+  --color-accent-shadow: var(--app-accent-shadow);
+}
+
+/* Default = yellow + dark, visually identical to the original design. */
+:root,
+html[data-theme="yellow"][data-mode="dark"] {
+  color-scheme: dark;
+  --app-background: #0a0a0a;
+  --app-surface: rgba(250, 204, 21, 0.05);
+  --app-surface-hover: rgba(250, 204, 21, 0.1);
+  --app-border: rgba(250, 204, 21, 0.15);
+  --app-border-strong: rgba(250, 204, 21, 0.6);
+  --app-text: #fefce8;
+  --app-muted: rgba(254, 249, 195, 0.6);
+  --app-faint: rgba(254, 240, 138, 0.4);
+  --app-accent: #fcd34d;
+  --app-accent-hover: #fde68a;
+  --app-accent-foreground: #422006;
+  --app-accent-shadow: rgba(234, 179, 8, 0.25);
+}
+
+html[data-theme="yellow"][data-mode="light"] {
+  color-scheme: light;
+  --app-background: #fffdf5;
+  --app-surface: rgba(202, 138, 4, 0.07);
+  --app-surface-hover: rgba(202, 138, 4, 0.14);
+  --app-border: rgba(161, 98, 7, 0.2);
+  --app-border-strong: rgba(161, 98, 7, 0.55);
+  --app-text: #1c1507;
+  --app-muted: rgba(69, 51, 10, 0.75);
+  --app-faint: rgba(120, 90, 20, 0.5);
+  --app-accent: #a16207;
+  --app-accent-hover: #854d0e;
+  --app-accent-foreground: #fffbeb;
+  --app-accent-shadow: rgba(161, 98, 7, 0.25);
+}
+
+html[data-theme="green"][data-mode="dark"] {
+  color-scheme: dark;
+  --app-background: #04110c;
+  --app-surface: rgba(52, 211, 153, 0.05);
+  --app-surface-hover: rgba(52, 211, 153, 0.1);
+  --app-border: rgba(52, 211, 153, 0.15);
+  --app-border-strong: rgba(52, 211, 153, 0.6);
+  --app-text: #ecfdf5;
+  --app-muted: rgba(209, 250, 229, 0.6);
+  --app-faint: rgba(167, 243, 208, 0.4);
+  --app-accent: #34d399;
+  --app-accent-hover: #6ee7b7;
+  --app-accent-foreground: #042f1f;
+  --app-accent-shadow: rgba(16, 185, 129, 0.25);
+}
+
+html[data-theme="green"][data-mode="light"] {
+  color-scheme: light;
+  --app-background: #f5fffa;
+  --app-surface: rgba(5, 150, 105, 0.07);
+  --app-surface-hover: rgba(5, 150, 105, 0.14);
+  --app-border: rgba(4, 120, 87, 0.2);
+  --app-border-strong: rgba(4, 120, 87, 0.55);
+  --app-text: #052e21;
+  --app-muted: rgba(6, 60, 44, 0.75);
+  --app-faint: rgba(6, 95, 70, 0.5);
+  --app-accent: #047857;
+  --app-accent-hover: #065f46;
+  --app-accent-foreground: #f0fdf4;
+  --app-accent-shadow: rgba(4, 120, 87, 0.25);
+}
+
+html[data-theme="pink"][data-mode="dark"] {
+  color-scheme: dark;
+  --app-background: #140610;
+  --app-surface: rgba(244, 114, 182, 0.06);
+  --app-surface-hover: rgba(244, 114, 182, 0.12);
+  --app-border: rgba(244, 114, 182, 0.18);
+  --app-border-strong: rgba(244, 114, 182, 0.6);
+  --app-text: #fdf2f8;
+  --app-muted: rgba(252, 231, 243, 0.62);
+  --app-faint: rgba(251, 207, 232, 0.4);
+  --app-accent: #f472b6;
+  --app-accent-hover: #f9a8d4;
+  --app-accent-foreground: #4a0424;
+  --app-accent-shadow: rgba(236, 72, 153, 0.25);
+}
+
+html[data-theme="pink"][data-mode="light"] {
+  color-scheme: light;
+  --app-background: #fff7fb;
+  --app-surface: rgba(190, 24, 93, 0.06);
+  --app-surface-hover: rgba(190, 24, 93, 0.13);
+  --app-border: rgba(157, 23, 77, 0.2);
+  --app-border-strong: rgba(157, 23, 77, 0.55);
+  --app-text: #2b0417;
+  --app-muted: rgba(80, 8, 45, 0.75);
+  --app-faint: rgba(131, 24, 67, 0.5);
+  --app-accent: #be185d;
+  --app-accent-hover: #9d174d;
+  --app-accent-foreground: #fff1f7;
+  --app-accent-shadow: rgba(190, 24, 93, 0.25);
+}
+
+body {
+  background-color: var(--app-background);
+  color: var(--app-text);
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body {
+    transition: none;
+  }
+}

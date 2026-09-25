@@ -1,5 +1,5 @@
 ---
-status: pending
+status: implemented
 title: Multi-theme option (Yellow / Green / Pink + light & dark mode)
 ---
 

@@ -1,9 +1,31 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="yellow" data-mode="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>App</title>
+    <script>
+      // Anti-flash: apply the stored theme before the first paint.
+      (function () {
+        try {
+          var colors = ['yellow', 'green', 'pink'];
+          var modes = ['light', 'dark'];
+          var color = 'yellow';
+          var mode =
+            window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches
+              ? 'light'
+              : 'dark';
+          var raw = localStorage.getItem('app-theme-preference');
+          if (raw) {
+            var parsed = JSON.parse(raw);
+            if (parsed && colors.indexOf(parsed.colorTheme) !== -1) color = parsed.colorTheme;
+            if (parsed && modes.indexOf(parsed.mode) !== -1) mode = parsed.mode;
+          }
+          document.documentElement.setAttribute('data-theme', color);
+          document.documentElement.setAttribute('data-mode', mode);
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
